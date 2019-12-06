@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from '@angular/material';
 import { UserService } from 'src/app/providers/user/user.service';
@@ -6,7 +6,8 @@ import { UserService } from 'src/app/providers/user/user.service';
 @Component({
 	selector: 'app-user-list',
 	templateUrl: './user-list.component.html',
-	styleUrls: ['./user-list.component.scss']
+	styleUrls: ['./user-list.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class UserListComponent implements OnInit {
 
