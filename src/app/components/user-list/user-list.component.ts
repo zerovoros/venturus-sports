@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from '@angular/material';
-import { UserService } from 'src/app/providers/user/user.service';
+import { UsersService } from 'src/app/providers/users/users.service';
 
 @Component({
 	selector: 'app-user-list',
@@ -11,11 +11,18 @@ import { UserService } from 'src/app/providers/user/user.service';
 })
 export class UserListComponent implements OnInit {
 
+	categories = [
+		{ title: 'Cycling', type: 'Sport type', icon: 'fa-puzzle-piece' },
+		{ title: 'Advanced', type: 'Mode', icon: 'fa-trophy' },
+		{ title: '30 miles', type: 'Route', icon: 'fa-map-signs' }
+	];
 	columns = ['username', 'name', 'email', 'city', 'ride', 'days', 'posts', 'albums', 'photos', 'actions'];
 	dataSource = new MatTableDataSource();
 	filter: FormControl = new FormControl('');
+	frequency = ['Always', 'Sometimes', 'Never'];
+	regularity = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-	constructor(public userServ: UserService) {
+	constructor(public userServ: UsersService) {
 		this.filter.valueChanges.subscribe(val => this.filterTable());
 	}
 
@@ -24,7 +31,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	filterTable() {
-		console.log(this.filter.value);
+		this.dataSource.filter = this.filter.value.trim();
 	}
 
 	async getData() {
@@ -35,18 +42,52 @@ export class UserListComponent implements OnInit {
 
 		users.map((user, index) => {
 			const publications = [];
-			let photoAmount = 0;
 			posts.map(post => { if (post.userId == user.id) publications.push(post); });
-			albums.map((album, index) => {
+			users[index] = Object.assign({
+				albums: [],
+				photoAmount: 0,
+				posts: publications,
+				rideInGroup: this.frequency[Math.floor(Math.random() * this.frequency.length)],
+				days: this.randomizeDays()
+			}, user);
+			albums.map((album, i) => {
 				const pics = [];
 				photos.map(photo => { if (photo.albumId == album.id) pics.push(photo) });
-				if (album.userId == user.id) photoAmount += pics.length;
-				albums[index] = Object.assign({ photos: pics }, album);
+				albums[i] = Object.assign({ photos: pics }, album);
+				if (album.userId == user.id) {
+					users[index].photoAmount += pics.length;
+					users[index].albums.push(albums[i]);
+				}
 			});
-			users[index] = Object.assign({ albums: albums, photoAmount: photoAmount, posts: publications }, user);
 		});
 
 		this.dataSource.data = users;
+	}
+
+	randomizeDays() {
+		let limit = Math.floor(Math.random() * this.regularity.length);
+		if (limit == 0) limit++;
+		const days = [];
+		for (let i=0; i<limit; i++) {
+			const day = this.regularity[Math.floor(Math.random() * this.regularity.length)];
+			if (!days.includes(day)) days.push(day);
+			else i--;
+		}
+
+		return this.sortDays(days);
+	}
+
+	sortDays(days: any[]) {
+		const sortedDays = [];
+		this.regularity.forEach(day => { if (days.includes(day)) sortedDays.push(day) });
+		return sortedDays;
+	}
+
+	displayDays(days: any[]) {
+		if (days.length == 5 && !days.includes('sun') && !days.includes('sat')) return 'Week days';
+		else if (days.length == 2 && days.includes('sun') && days.includes('sat')) return 'Weekends';
+		else if (days.length == 7) return 'Every day';
+		else return days.join(', ');
 	}
 
 }

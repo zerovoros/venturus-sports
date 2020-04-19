@@ -1,1 +1,23 @@
-<p>header works!</p>
+<header class="container">
+	<div class="left-part">
+		<div class="header-cube">
+			<i class="fas fa-question"></i>
+		</div>
+		<span class="logo">Venturus Sports</span>
+	</div>
+	<div class="right-part">
+		<mat-menu #userMenu="matMenu" xPosition="before">
+			<button mat-menu-item *ngFor="let item of menuItems">{{ item }}</button>
+			<mat-divider></mat-divider>
+			<button mat-menu-item>Log out</button>
+		</mat-menu>
+		<div class="initials" *ngIf="initials">
+			<span>{{ initials }}</span>
+		</div>
+		<button mat-button [matMenuTriggerFor]="userMenu">
+			{{ user?.username }}
+			<i class="fas fa-chevron-down"></i>
+		</button>
+
+	</div>
+</header>

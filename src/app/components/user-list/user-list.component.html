@@ -1,64 +1,83 @@
-<div class="row">
-	<h2>Users</h2>
-	<hr />
-	<mat-form-field>
-		<input matInput placeholder="Filter table content" [formControl]="filter" autocomplete="off">
-	</mat-form-field>
-</div>
-<div class="row">
-	<table mat-table [dataSource]="dataSource">
-		<!-- Username Column -->
-		<ng-container matColumnDef="username">
-			<th mat-header-cell *matHeaderCellDef>Username</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.username }}</td>
-		</ng-container>
-		<!-- Name Column -->
-		<ng-container matColumnDef="name">
-			<th mat-header-cell *matHeaderCellDef>Name</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.name }}</td>
-		</ng-container>
-		<!-- E-mail Column -->
-		<ng-container matColumnDef="email">
-			<th mat-header-cell *matHeaderCellDef>E-mail</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.email }}</td>
-		</ng-container>
-		<!-- City Column -->
-		<ng-container matColumnDef="city">
-			<th mat-header-cell *matHeaderCellDef>City</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.address?.city }}</td>
-		</ng-container>
-		<!-- Ride in group Column -->
-		<ng-container matColumnDef="ride">
-			<th mat-header-cell *matHeaderCellDef>Ride in group</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.rideInGroup }}</td>
-		</ng-container>
-		<!-- Day of the week Column -->
-		<ng-container matColumnDef="days">
-			<th mat-header-cell *matHeaderCellDef>Day os the week</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.days }}</td>
-		</ng-container>
-		<!-- Posts Column -->
-		<ng-container matColumnDef="posts">
-			<th mat-header-cell *matHeaderCellDef>Posts</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.posts?.length }}</td>
-		</ng-container>
-		<!-- Albums -->
-		<ng-container matColumnDef="albums">
-			<th mat-header-cell *matHeaderCellDef>Albums</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.albums?.length }}</td>
-		</ng-container>
-		<!-- Photos -->
-		<ng-container matColumnDef="photos">
-			<th mat-header-cell *matHeaderCellDef>Posts</th>
-			<td mat-cell *matCellDef="let elem">{{ elem?.photoAmount }}</td>
-		</ng-container>
-		<!-- Actions -->
-		<ng-container matColumnDef="actions">
-			<th mat-header-cell *matHeaderCellDef></th>
-			<td mat-cell *matCellDef="let elem">excluir</td>
-		</ng-container>
+<div class="breadcumb container">
 
-		<tr mat-header-row *matHeaderRowDef="columns"></tr>
-		<tr mat-row *matRowDef="let row; columns: columns;"></tr>
-	</table>
 </div>
+<div class="category">
+	<div class="container">
+		<div class="row">
+			<div class="category-unit" *ngFor="let category of categories">
+				<i [ngClass]="['fas fa-3x', category.icon]"></i>
+				<div class="category-text-group">
+					<p class="category-type">{{ category.type }}</p>
+					<p class="category-title">{{ category.title }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="container user-list">
+	<div class="row filter-row">
+		<h2>Users</h2>
+		<hr />
+		<mat-form-field appearance="outline" class="filter">
+			<i class="fas fa-search" matPreffix></i>
+			<input matInput placeholder="Filter table content" [formControl]="filter" autocomplete="off">
+		</mat-form-field>
+	</div>
+	<div class="row">
+		<table mat-table [dataSource]="dataSource">
+			<!-- Username Column -->
+			<ng-container matColumnDef="username">
+				<mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.username }}</mat-cell>
+			</ng-container>
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.name }}</mat-cell>
+			</ng-container>
+			<!-- E-mail Column -->
+			<ng-container matColumnDef="email">
+				<mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.email }}</mat-cell>
+			</ng-container>
+			<!-- City Column -->
+			<ng-container matColumnDef="city">
+				<mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.address?.city }}</mat-cell>
+			</ng-container>
+			<!-- Ride in group Column -->
+			<ng-container matColumnDef="ride">
+				<mat-header-cell *matHeaderCellDef>Ride in group</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.rideInGroup }}</mat-cell>
+			</ng-container>
+			<!-- Day of the week Column -->
+			<ng-container matColumnDef="days">
+				<mat-header-cell *matHeaderCellDef>Day os the week</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ displayDays(elem?.days) }}</mat-cell>
+			</ng-container>
+			<!-- Posts Column -->
+			<ng-container matColumnDef="posts">
+				<mat-header-cell *matHeaderCellDef>Posts</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.posts?.length }}</mat-cell>
+			</ng-container>
+			<!-- Albums -->
+			<ng-container matColumnDef="albums">
+				<mat-header-cell *matHeaderCellDef>Albums</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.albums?.length }}</mat-cell>
+			</ng-container>
+			<!-- Photos -->
+			<ng-container matColumnDef="photos">
+				<mat-header-cell *matHeaderCellDef>Photos</mat-header-cell>
+				<mat-cell *matCellDef="let elem">{{ elem?.photoAmount }}</mat-cell>
+			</ng-container>
+			<!-- Actions -->
+			<ng-container matColumnDef="actions">
+				<mat-header-cell *matHeaderCellDef></mat-header-cell>
+				<mat-cell *matCellDef="let elem"><i class="fas fa-trash"></i></mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: columns;"></mat-row>
+		</table>
+	</div>
+</section>

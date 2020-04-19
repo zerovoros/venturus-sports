@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatRadioModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatMenuModule, MatDividerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,8 +28,10 @@ import { NewUserPage } from './pages/users/new/new';
 		HttpClientModule,
 		MatButtonModule,
 		MatCheckboxModule,
+		MatDividerModule,
 		MatFormFieldModule,
 		MatInputModule,
+		MatMenuModule,
 		MatRadioModule,
 		MatTableModule,
 		ReactiveFormsModule

@@ -6,19 +6,8 @@ export class UserService {
 
 	constructor(private http: HttpClient) { }
 
-	getUsers() {
-		return this.http.get('https://jsonplaceholder.typicode.com/users');
+	getUser() {
+		return this.http.get('/assets/mocks/user.json');
 	}
 
-	getAlbums() {
-		return this.http.get('https://jsonplaceholder.typicode.com/albums');
-	}
-
-	getPhotos() {
-		return this.http.get('https://jsonplaceholder.typicode.com/photos');
-	}
-
-	getPosts() {
-		return this.http.get('https://jsonplaceholder.typicode.com/posts');
-	}
 }

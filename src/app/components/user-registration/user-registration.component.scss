@@ -1,0 +1,51 @@
+@import 'variables';
+@import 'mixins';
+
+app-user-registration {
+	.row > hr {
+		background-color: color(white-smoke);
+		border: none;
+		height: 4px;
+		margin: auto 0 auto 80px;
+		width: 100%;
+	}
+	.tips {
+		margin-bottom: 50px;
+		.row { justify-content: space-between; }
+		h4 {
+			color: color(primary);
+			font-size: 24px;
+			font-weight: 400;
+			margin: 0 0 20px;
+		}
+		i { color: color(primary); }
+		p {
+			color: color(dark-gray);
+			font-size: 18px;
+			margin: 0 0 0 20px;
+			max-width: 350px;
+		}
+	}
+	.tip-text-group {
+		display: flex;
+		align-items: center;
+	}
+	form {
+		margin: 0 auto;
+		width: 80%;
+		hr { margin-bottom: 50px; }
+		.row:not(:last-of-type) { justify-content: space-between; }
+		.row { padding: 8px 0; }
+	}
+	.user-checkbox, .user-radio, .mat-form-field { width: 45%; }
+
+	.user-checkbox > mat-label, .user-radio > mat-label {
+		display: block;
+		margin-bottom: 8px;
+		width: 100%;
+	}
+	.mat-radio-button, .mat-checkbox { margin-right: 8px; }
+
+	.btn-primary { margin-right: 16px; }
+
+}

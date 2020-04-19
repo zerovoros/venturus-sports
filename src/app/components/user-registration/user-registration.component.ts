@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-user-registration',
 	templateUrl: './user-registration.component.html',
-	styleUrls: ['./user-registration.component.scss']
+	styleUrls: ['./user-registration.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class UserRegistrationComponent implements OnInit {
 
 	form: FormGroup;
 	frequencies = ['always', 'sometimes', 'never'];
+	tips = [
+		{ title: 'Need help?', icon: 'far fa-life-ring' },
+		{ title: 'Why register?', icon: 'fas fa-heartbeat' },
+		{ title: 'What people are saying...', icon: 'far fa-smile' }
+	];
 	weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 	constructor(private fb: FormBuilder) {
