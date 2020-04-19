@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatMenuModule, MatDividerModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatMenuModule, MatDividerModule, MatDialogModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { UsersPage } from './pages/users/users';
 import { NewUserPage } from './pages/users/new/new';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -19,7 +21,9 @@ import { NewUserPage } from './pages/users/new/new';
 		UserListComponent,
 		UserRegistrationComponent,
 		UsersPage,
-		NewUserPage
+		NewUserPage,
+		BreadcrumbComponent,
+		UserDialogComponent
 	],
 	imports: [
 		BrowserModule,
@@ -28,6 +32,7 @@ import { NewUserPage } from './pages/users/new/new';
 		HttpClientModule,
 		MatButtonModule,
 		MatCheckboxModule,
+		MatDialogModule,
 		MatDividerModule,
 		MatFormFieldModule,
 		MatInputModule,
@@ -36,6 +41,7 @@ import { NewUserPage } from './pages/users/new/new';
 		MatTableModule,
 		ReactiveFormsModule
 	],
+	entryComponents: [UserDialogComponent],
 	providers: [],
 	bootstrap: [AppComponent]
 })

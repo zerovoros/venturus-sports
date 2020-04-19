@@ -1,3 +1,18 @@
 <app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="category">
+	<div class="container">
+		<div class="row">
+			<div class="category-unit" *ngFor="let category of categories">
+				<i [ngClass]="['fas fa-3x', category.icon]"></i>
+				<div class="category-text-group">
+					<p class="category-type">{{ category.type }}</p>
+					<p class="category-title">{{ category.title }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <app-user-list></app-user-list>

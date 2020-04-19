@@ -34,6 +34,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .row { display: flex; width: 100%; }
 .container { padding: 0 5%; }
+.flex { display: flex; }
 
 h2 {
 	color: color(dark-gray);
@@ -54,6 +55,7 @@ h2 {
 .btn-primary {
 	background-color: color(primary);
 	color: white;
+	&:disabled { background-color: color(secondary); }
 }
 
 .btn-ghost {

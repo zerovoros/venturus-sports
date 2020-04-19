@@ -1,0 +1,28 @@
+@import 'variables';
+@import 'mixins';
+
+app-breadcrumb {
+
+	.breadcrumb { padding: 16px 5%; }
+
+	a:first-child { color: color(primary); }
+
+	a:not(:first-child) {
+		color: color(dark-gray);
+		cursor: pointer;
+		text-transform: capitalize;
+
+		&:hover, &:active {
+			color: color(primary);
+			text-decoration: underline;
+		}
+	}
+
+	.routes {
+		display: inline;
+		i {
+			color: color(_gray);
+			margin: 0 20px;
+		}
+	}
+}

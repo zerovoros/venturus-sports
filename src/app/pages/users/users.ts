@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.html',
-  styleUrls: ['./users.scss']
+	selector: 'app-users',
+	templateUrl: './users.html',
+	styleUrls: ['./users.scss'],
+	encapsulation: ViewEncapsulation.None
 })
-export class UsersPage implements OnInit {
+export class UsersPage {
 
-  constructor() { }
+	categories = [
+		{ title: 'Cycling', type: 'Sport type', icon: 'fa-puzzle-piece' },
+		{ title: 'Advanced', type: 'Mode', icon: 'fa-trophy' },
+		{ title: '30 miles', type: 'Route', icon: 'fa-map-signs' }
+	];
 
-  ngOnInit() {
-  }
+	constructor() { }
 
 }

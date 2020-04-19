@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from '@angular/material';
 import { UsersService } from 'src/app/providers/users/users.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 @Component({
 	selector: 'app-user-list',
@@ -11,18 +13,17 @@ import { UsersService } from 'src/app/providers/users/users.service';
 })
 export class UserListComponent implements OnInit {
 
-	categories = [
-		{ title: 'Cycling', type: 'Sport type', icon: 'fa-puzzle-piece' },
-		{ title: 'Advanced', type: 'Mode', icon: 'fa-trophy' },
-		{ title: '30 miles', type: 'Route', icon: 'fa-map-signs' }
-	];
 	columns = ['username', 'name', 'email', 'city', 'ride', 'days', 'posts', 'albums', 'photos', 'actions'];
 	dataSource = new MatTableDataSource();
 	filter: FormControl = new FormControl('');
 	frequency = ['Always', 'Sometimes', 'Never'];
-	regularity = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+	weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+	users = [];
 
-	constructor(public userServ: UsersService) {
+	constructor(
+		private dialog: MatDialog,
+		private userServ: UsersService
+	) {
 		this.filter.valueChanges.subscribe(val => this.filterTable());
 	}
 
@@ -38,7 +39,7 @@ export class UserListComponent implements OnInit {
 		const albums: any = await this.userServ.getAlbums().toPromise();
 		const photos: any = await this.userServ.getPhotos().toPromise();
 		const posts: any = await this.userServ.getPosts().toPromise();
-		const users: any = await this.userServ.getUsers().toPromise();
+		let users: any = await this.userServ.getUsers().toPromise();
 
 		users.map((user, index) => {
 			const publications = [];
@@ -61,17 +62,20 @@ export class UserListComponent implements OnInit {
 			});
 		});
 
+		if (localStorage.users) users = users.concat(JSON.parse(localStorage.users));
+
+		this.users = users;
 		this.dataSource.data = users;
 	}
 
 	randomizeDays() {
-		let limit = Math.floor(Math.random() * this.regularity.length);
+		let limit = Math.floor(Math.random() * this.weekdays.length);
 		if (limit == 0) limit++;
 		const days = [];
 		for (let i=0; i<limit; i++) {
-			const day = this.regularity[Math.floor(Math.random() * this.regularity.length)];
+			const day = this.weekdays[Math.floor(Math.random() * this.weekdays.length)];
 			if (!days.includes(day)) days.push(day);
-			else i--;
+			// else i--;
 		}
 
 		return this.sortDays(days);
@@ -79,7 +83,7 @@ export class UserListComponent implements OnInit {
 
 	sortDays(days: any[]) {
 		const sortedDays = [];
-		this.regularity.forEach(day => { if (days.includes(day)) sortedDays.push(day) });
+		this.weekdays.forEach(day => { if (days.includes(day)) sortedDays.push(day) });
 		return sortedDays;
 	}
 
@@ -88,6 +92,18 @@ export class UserListComponent implements OnInit {
 		else if (days.length == 2 && days.includes('sun') && days.includes('sat')) return 'Weekends';
 		else if (days.length == 7) return 'Every day';
 		else return days.join(', ');
+	}
+
+	removeUser(index) {
+		const dialog = this.dialog.open(UserDialogComponent);
+
+		dialog.afterClosed().subscribe(response => {
+			console.log(response);
+			if (response) {
+				this.users.splice(index, 1);
+				this.dataSource.data = this.users;
+			}
+		});
 	}
 
 }

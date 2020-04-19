@@ -21,4 +21,10 @@ export class UsersService {
 	getPosts() {
 		return this.http.get('https://jsonplaceholder.typicode.com/posts');
 	}
+
+	postUsers(body) {
+		const users = localStorage.users ? JSON.parse(localStorage.users) : [];
+		users.push(body)
+		localStorage.setItem('users', JSON.stringify(users));
+	}
 }

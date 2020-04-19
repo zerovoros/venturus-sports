@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'mixins';
+
+app-users {
+	.category {
+		background-color: color(secondary);
+		padding: 50px 0px;
+		margin-bottom: 20px;
+	}
+	.category-unit {
+		display: flex;
+		i { color: color(primary); }
+		p { margin: 0; }
+		&:not(:first-child) { margin-left: 40px; }
+		&:not(:last-child) { margin-right: 40px; }
+	}
+	.category-text-group { margin: auto 0 0 20px; }
+	.category-type {
+		color: color(_gray);
+		font-size: 14px;
+	}
+	.category-title {
+		color: color(dark-gray);
+		font-size: 24px;
+		font-weight: 500;
+	}
+}

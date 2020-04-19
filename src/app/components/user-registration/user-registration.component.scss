@@ -3,7 +3,7 @@
 
 app-user-registration {
 	.row > hr {
-		background-color: color(white-smoke);
+		background-color: color(whisper);
 		border: none;
 		height: 4px;
 		margin: auto 0 auto 80px;
@@ -30,22 +30,94 @@ app-user-registration {
 		display: flex;
 		align-items: center;
 	}
-	form {
+	.user-form {
 		margin: 0 auto;
 		width: 80%;
+
 		hr { margin-bottom: 50px; }
+
 		.row:not(:last-of-type) { justify-content: space-between; }
+
 		.row { padding: 8px 0; }
-	}
-	.user-checkbox, .user-radio, .mat-form-field { width: 45%; }
 
-	.user-checkbox > mat-label, .user-radio > mat-label {
-		display: block;
-		margin-bottom: 8px;
-		width: 100%;
-	}
-	.mat-radio-button, .mat-checkbox { margin-right: 8px; }
+		.flex { align-items: center; }
 
-	.btn-primary { margin-right: 16px; }
+		.flex, .mat-form-field { width: 45%; }
+
+		.mat-form-field-infix { padding: 0; }
+
+		.custom-label {
+			color: color(dark-gray);
+			margin: 4px;
+		}
+
+		.mat-input-element {
+			border: 1px solid color(_silver);
+			border-radius: 5px;
+			margin-top: 4px;
+			padding: 8px;
+			width: calc(100% - 16px);
+		}
+
+		.mat-form-field-underline { display: none; }
+
+		.mat-focused {
+			.mat-input-element { border-color: color(primary); }
+		}
+
+		.mat-form-field-invalid {
+			.mat-input-element { border-color: red; }
+		}
+
+		.user-checkbox > mat-label, .user-radio > mat-label {
+			display: block;
+			margin: 0 0 8px;
+			width: 100%;
+		}
+		.mat-radio-button:not(:last-of-type) { margin-right: 24px; }
+		.mat-checkbox { margin-right: 8px; }
+
+		.user-radio {
+			margin-top: -12px;
+			.mat-radio-inner-circle {
+				background-color: color(dark-gray);
+			}
+			.mat-radio-outer-circle {
+				border-width: 1px;
+				border-color: color(_silver);
+			}
+			.mat-radio-checked .mat-radio-outer-circle {
+				border-color: color(primary);
+			}
+			.mat-radio-label-content { color: color(dark-gray); }
+		}
+		.user-checkbox {
+			margin-top: -18px;
+			.mat-checkbox-frame {
+				border-color: color(_silver);
+				border-radius: 5px;
+				border-width: 1px;
+			}
+			.mat-checkbox-inner-container {
+				height: 24px;
+				width: 24px;
+			}
+			.mat-checkbox-checked {
+				.mat-checkbox-frame { border-color: color(primary); }
+				.mat-checkbox-background {
+					background: none;
+					margin: 1px 1px 1px 2px;
+				}
+				.mat-checkbox-checkmark-path {
+					stroke: color(dark-gray) !important;
+					stroke-dashoffset: 3;
+					stroke-width: 4px;
+				}
+			}
+			.mat-checkbox-label { color: color(dark-gray); }
+		}
+
+		.btn-primary { margin-right: 16px; }
+	}
 
 }

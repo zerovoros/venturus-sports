@@ -1,0 +1,7 @@
+<div class="breadcrumb">
+	<a><i class="fas fa-home"></i></a>
+	<div class="routes" *ngFor="let item of breadcrumb; let i = index">
+		<i class="fas fa-chevron-right"></i>
+		<a (click)="navigate(i)">{{ item }}</a>
+	</div>
+</div>
