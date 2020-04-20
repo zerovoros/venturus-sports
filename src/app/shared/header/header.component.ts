@@ -9,9 +9,9 @@ import { UserService } from 'src/app/providers/user/user.service';
 })
 export class HeaderComponent {
 
-	private initials;
+	initials;
 	menuItems = [];
-	private user;
+	user;
 
 	constructor(private userServ: UserService) {
 		this.userServ.getUser().subscribe((user: any) => {

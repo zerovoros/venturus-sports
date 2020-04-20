@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material';
 import { UsersService } from 'src/app/providers/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
-import { LoaderComponent } from '../loader/loader.component';
+import { LoaderComponent } from '../../../shared/loader/loader.component';
 
 @Component({
 	selector: 'app-user-list',

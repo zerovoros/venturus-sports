@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class UserRegistrationComponent {
 
+	focused;
 	form: FormGroup;
 	frequencies = ['Always', 'Sometimes', 'Never'];
 	tips = [

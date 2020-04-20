@@ -21,22 +21,22 @@
 			<div class="row">
 				<mat-form-field>
 					<label class="custom-label">Username</label>
-					<input matInput (focus)="usernameFocus=true" formControlName="username" autocomplete="off">
-					<mat-hint [hidden]="!usernameFocus">Write your desired username</mat-hint>
+					<input matInput (focus)="focused='username'" formControlName="username" autocomplete="off">
+					<mat-hint [hidden]="focused!='username'">Write your desired username</mat-hint>
 					<mat-error *ngIf="username.getError('required')">Required</mat-error>
 				</mat-form-field>
 				<mat-form-field formGroupName="address">
 					<label class="custom-label">City</label>
 					<span class="optional">optional</span>
-					<input matInput (focus)='cityFocus = true' formControlName="city" autocomplete="off">
-					<mat-hint [hidden]="!cityFocus">Write the city you live</mat-hint>
+					<input matInput (focus)="focused='city'" formControlName="city" autocomplete="off">
+					<mat-hint [hidden]="focused!='city'">Write the city you live</mat-hint>
 				</mat-form-field>
 			</div>
 			<div class="row">
 				<mat-form-field>
 					<label class="custom-label">Name</label>
-					<input matInput (focus)="nameFocus=true" formControlName="name" autocomplete="off">
-					<mat-hint [hidden]="!nameFocus">Write your name</mat-hint>
+					<input matInput (focus)="focused='name'" formControlName="name" autocomplete="off">
+					<mat-hint [hidden]="focused!='name'">Write your name</mat-hint>
 					<mat-error *ngIf="username.getError('required')">Required</mat-error>
 				</mat-form-field>
 				<div class="flex">
@@ -53,8 +53,8 @@
 			<div class="row">
 				<mat-form-field>
 					<label class="custom-label">E-mail</label>
-					<input matInput (focus)="emailFocus=true" formControlName="email" autocomplete="off">
-					<mat-hint [hidden]="!emailFocus">Write your e-mail</mat-hint>
+					<input matInput (focus)="focused='email'" formControlName="email" autocomplete="off">
+					<mat-hint [hidden]="focused!='email'">Write your e-mail</mat-hint>
 					<mat-error *ngIf="email.getError('required')">Required</mat-error>
 				</mat-form-field>
 				<div class="flex">
