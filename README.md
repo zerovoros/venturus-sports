@@ -1,27 +1,38 @@
 # VenturusSports
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
+Sistema com cadastro e listagem de usuários realizado no teste para a empresa Venturus. O projeto foi feito utilizando framework javascript Angular.
 
-## Development server
+## Iniciando o Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+As instruções a seguir o ajudarão a ter o projeto executando localmente em sua máquina.
 
-## Code scaffolding
+### Pré-requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- git - https://git-scm.com/
+- node.js - https://nodejs.org/
+- angular cli - https://cli.angular.io/
 
-## Build
+### Instalação
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Abra o terminal e e direcione para o local que deseja clonar o projeto.
+- Execute a seguinte sequência de comandos para clonar e instalar as dependências do projeto:
 
-## Running unit tests
+```
+git clone https://github.com/zerovoros/venturus-sports.git
+cd venturus-sports
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Para realizar a build do projeto utilize o comando:
 
-## Running end-to-end tests
+```
+ng build --prod
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Para executar o projeto utilize o comando:
 
-## Further help
+```
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Uma nova ava no seu navegador será aberta na url `http://localhost:8100/`. Caso não ocorra, insira a url manualmente.
