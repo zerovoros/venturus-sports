@@ -66,8 +66,8 @@ export class UserRegistrationComponent {
 	}
 
 	save(data) {
-		// data.days = this.sortDays(data.days);
-		// this.userServ.postUsers(data);
+		data.days = this.sortDays(data.days);
+		this.userServ.postUsers(data);
 		this.snackbar.open('New user created', '', {duration: 4000});
 		this.clearForm();
 	}
