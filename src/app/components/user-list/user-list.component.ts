@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { MatTableDataSource } from '@angular/material';
 import { UsersService } from 'src/app/providers/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
 	selector: 'app-user-list',
@@ -13,6 +14,7 @@ import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 })
 export class UserListComponent implements OnInit {
 
+	@ViewChild('loader', null) loader: LoaderComponent;
 	columns = ['username', 'name', 'email', 'city', 'ride', 'days', 'posts', 'albums', 'photos', 'actions'];
 	dataSource = new MatTableDataSource();
 	filter: FormControl = new FormControl('');
@@ -36,6 +38,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	async getData() {
+		this.loader.newLoader(null, 'Loading data');
 		const albums: any = await this.userServ.getAlbums().toPromise();
 		const photos: any = await this.userServ.getPhotos().toPromise();
 		const posts: any = await this.userServ.getPosts().toPromise();
@@ -64,6 +67,7 @@ export class UserListComponent implements OnInit {
 
 		if (localStorage.users) users = users.concat(JSON.parse(localStorage.users));
 
+		this.loader.stopLoader();
 		this.users = users;
 		this.dataSource.data = users;
 	}

@@ -1,0 +1,6 @@
+<div class="loader" *ngIf="!hidden" #loader>
+	<div class="content">
+		<mat-progress-spinner [diameter]="diameter" [mode]="mode" color="primary"></mat-progress-spinner>
+		<h2 [innerHtml]="text"></h2>
+	</div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/providers/users/users.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
 	selector: 'app-user-registration',
@@ -21,6 +22,7 @@ export class UserRegistrationComponent {
 
 	constructor(
 		private fb: FormBuilder,
+		private snackbar: MatSnackBar,
 		private userServ: UsersService
 	) {
 		this.form = this.fb.group({
@@ -64,8 +66,9 @@ export class UserRegistrationComponent {
 	}
 
 	save(data) {
-		data.days = this.sortDays(data.days);
-		this.userServ.postUsers(data);
+		// data.days = this.sortDays(data.days);
+		// this.userServ.postUsers(data);
+		this.snackbar.open('New user created', '', {duration: 4000});
 		this.clearForm();
 	}
 

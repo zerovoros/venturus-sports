@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatMenuModule, MatDividerModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatMenuModule, MatDividerModule, MatDialogModule, MatProgressSpinnerModule, MatSnackBarModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { UsersPage } from './pages/users/users';
 import { NewUserPage } from './pages/users/new/new';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 		UsersPage,
 		NewUserPage,
 		BreadcrumbComponent,
-		UserDialogComponent
+		UserDialogComponent,
+		LoaderComponent
 	],
 	imports: [
 		BrowserModule,
@@ -37,7 +39,9 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 		MatFormFieldModule,
 		MatInputModule,
 		MatMenuModule,
+		MatProgressSpinnerModule,
 		MatRadioModule,
+		MatSnackBarModule,
 		MatTableModule,
 		ReactiveFormsModule
 	],
