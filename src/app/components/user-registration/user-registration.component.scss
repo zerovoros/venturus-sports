@@ -51,6 +51,12 @@ app-user-registration {
 			margin: 4px;
 		}
 
+		.optional {
+			color: color(_silver);
+			margin-left: calc(100% - 79px);
+			font-size: 12px;
+		}
+
 		.mat-input-element {
 			border: 1px solid color(_silver);
 			border-radius: 5px;
@@ -79,16 +85,25 @@ app-user-registration {
 
 		.user-radio {
 			margin-top: -12px;
-			.mat-radio-inner-circle {
-				background-color: color(dark-gray);
+
+			.mat-radio-inner-circle,
+			.mat-radio-outer-circle,
+			.mat-radio-container {
+				height: 24px;
+				width: 24px;
 			}
+
+			.mat-radio-inner-circle { background-color: color(dark-gray); }
+
 			.mat-radio-outer-circle {
 				border-width: 1px;
 				border-color: color(_silver);
 			}
+
 			.mat-radio-checked .mat-radio-outer-circle {
 				border-color: color(primary);
 			}
+
 			.mat-radio-label-content { color: color(dark-gray); }
 		}
 		.user-checkbox {
