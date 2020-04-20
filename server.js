@@ -9,4 +9,5 @@ router.get('/*', (req, res) => {
 	res.sendFile(path.join(__dirname + '/dist/venturus-sports/index.html'));
 });
 
+app.use('/*', router);
 app.listen(process.env.PORT || 8000);
