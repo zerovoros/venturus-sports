@@ -35,4 +35,4 @@ ng build --prod
 ng serve
 ```
 
-- Uma nova ava no seu navegador será aberta na url `http://localhost:8100/`. Caso não ocorra, insira a url manualmente.
+- Uma nova aba no seu navegador será aberta na url `http://localhost:8100/`. Caso não ocorra, insira a url manualmente.
